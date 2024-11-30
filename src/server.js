@@ -11,8 +11,10 @@ const logger = require("./middleware/logger"); // Middleware personalizado para 
 const { mongoose, redisClient } = require("./config/db"); // Importamos las configuraciones de MongoDB y Redis
 
 //! Importamos las rutas
-//const alumnosRoutes = require("./routes/alumnos"); // Rutas relacionadas con la entidad alumnos;
-// const materiasRoutes = require("./routes/materias"); // Rutas relacionadas con la entidad materias
+//* Rutas relacionadas con la entidad productos
+const routesProductos = require('./routes/Productos'); 
+//* Rutas relacionadas con la entidad Usuarios-carrito-pedidos-comentarios
+const routesUCPC = require('./routes/Usuarios-carrito-pedidos-comentarios'); 
 
 //! Creamos una instancia de la aplicación Express
 const app = express();
@@ -25,12 +27,21 @@ app.use(morgan("dev"));
 //!Middleware personalizado para registrar solicitudes en Redis
 app.use(logger);
 
-//! Usamos las rutas importadas
-// app.use("/api/alumnos", alumnosRoutes);
-// app.use("/api/materias", materiasRoutes);
 
+//! ruta principal
+app.get('/', (req, res) => {
+    res.send('<h1>Laboratorio Mongo - Backend</h1><p>Esta es la página de inicio.</p>');
+});
+
+//! Usamos las rutas importadas
+
+
+app.use("/api/UCPC", routesUCPC);
+app.use("/api/productos", routesProductos);
+
+app.use(logger);
 //! Definimos el puerto en el que la aplicación escuchará las solicitudes
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 //! Iniciamos el servidor y lo ponemos a escuchar en el puerto definido
 app.listen(PORT, () => {
