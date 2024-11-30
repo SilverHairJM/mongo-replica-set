@@ -3,7 +3,8 @@ const redis = require("redis"); // Módulo para interactuar con Redis
 require("dotenv").config(); // Cargar variables de entorno desde un archivo .env
 // Conexión a MongoDB
 mongoose
-    .connect(process.env.MONGO_URI)
+    .connect(process.env.MONGO_URI
+    )
     .then(() => {
         console.log("Conectado a MongoDB"); // Mensaje de éxito en la conexión
     })

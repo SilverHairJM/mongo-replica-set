@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: . # Ruta al Dockerfile que construirá tu aplicación backend
+    container_name: replica-apis
+    ports:
+      - "3001:4000"
+    environment:
+      - MONGO_URI=mongodb://mongo-primary:27017,mongo-secondary1:27017,mongo-secondary2:27017,mongo-secondary3:27017,mongo-secondary4:27017/tienda_ropa?replicaSet=replica01
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - mongo-primary
+      - redis
+    networks:
+      backend:
+        ipv4_address: 172.18.0.10
+    command: npm start
+
+  mongo-primary:
+    image: mongo:latest
+    container_name: mongo-primary
+    command: mongod --replSet replica01 --bind_ip_all
+    ports:
+      - "27017:27017"
+    networks:
+      backend:
+        ipv4_address: 172.18.0.2
+
+  mongo-secondary1:
+    image: mongo:latest
+    container_name: mongo-secondary1
+    command: mongod --replSet replica01 --bind_ip_all
+    ports:
+      - "27018:27017"
+    networks:
+      backend:
+        ipv4_address: 172.18.0.3
+  
+  mongo-secondary2:
+    image: mongo:latest
+    container_name: mongo-secondary2
+    command: mongod --replSet replica01 --bind_ip_all
+    ports:
+      - "27019:27017"
+    networks:
+      backend:
+        ipv4_address: 172.18.0.4
+  
+  mongo-secondary3:
+    image: mongo:latest
+    container_name: mongo-secondary3
+    command: mongod --replSet replica01 --bind_ip_all
+    ports:
+      - "27020:27017"
+    networks:
+      backend:
+        ipv4_address: 172.18.0.5
+  
+  mongo-secondary4:
+    image: mongo:latest
+    container_name: mongo-secondary4
+    command: mongod --replSet replica01 --bind_ip_all
+    ports:
+      - "27021:27017"
+    networks:
+      backend:
+        ipv4_address: 172.18.0.6
+
+      
+  redis:
+    image: redis:latest
+    container_name: redis-lab-cache
+    ports:
+      - "6379:6379"
+    networks:
+      backend:
+        ipv4_address: 172.18.0.7
+
+  redis-insight:
+    image: redislabs/redisinsight:latest
+    container_name: redis-insight
+    ports:
+      - "8001:8001"
+    networks:
+      backend:
+        ipv4_address: 172.18.0.8
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/24
