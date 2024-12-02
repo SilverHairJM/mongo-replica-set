@@ -67,8 +67,7 @@ services:
     networks:
       backend:
         ipv4_address: 172.18.0.6
-
-      
+        
   redis:
     image: redis:latest
     container_name: redis-lab-cache

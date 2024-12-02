@@ -1,0 +1,434 @@
+{
+	"info": {
+		"_postman_id": "9c8349b2-9e76-4e5c-9412-8ff92ff2a26c",
+		"name": "Mongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29523940"
+	},
+	"item": [
+		{
+			"name": "Usuarios-Carrito-Pedidos-Comentarios",
+			"item": [
+				{
+					"name": "ObtenerTodo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearUActualizar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\": 2,\n    \"nombre\": \"María López\",\n    \"email\": \"maria.lopez@example.com\",\n    \"contraseña\": \"securepass456\",\n    \"direccionEnvio\": \"Av. Insurgentes 567, CDMX, México\",\n    \"telefono\": \"9876543210\",\n    \"carrito\": {\n        \"idCarrito\": 2,\n        \"productos\": [{\n            \"producto_id\": 3,\n            \"cantidad\": 1\n        }, {\n            \"producto_id\": 5,\n            \"cantidad\": 1\n        }]\n    },\n    \"pedidos\": [{\n        \"idPedido\": 1002,\n        \"fecha_pedido\": \"2024-11-18\",\n        \"estado\": \"enviado\",\n        \"productos\": [{\n            \"producto_id\": 3,\n            \"cantidad\": 1,\n            \"precioNeto\": 1299\n        }, {\n            \"producto_id\": 5,\n            \"cantidad\": 1,\n            \"precioNeto\": 2499\n        }],\n        \"precioTotal\": 3798,\n        \"metodoPago\": \"PayPal\"\n    }],\n    \"comentarios\": [{\n        \"idComentario\": 2,\n        \"producto_id\": 3,\n        \"valoracion\": \"9\",\n        \"comentario\": \"Muy buen pantalón, cómodo y ajusta bien.\"\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/crearActualizarUCPC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"crearActualizarUCPC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarUCPC",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\": 6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/eliminarUCPC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"eliminarUCPC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/Q4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"Q4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q5",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/Q5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"Q5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q6",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/Q6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"Q6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q7",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/Q7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"Q7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q8",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/Q8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"Q8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q9",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"producto_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/UCPC/Q9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"UCPC",
+								"Q9"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Esta carpeta contiene las consultas hacia la coleccion de usuarios, carrito, comentarios, donde los usuarios es el documento principal y los demas son documentos secundarios"
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "obtenerProductos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearUActualizar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "/** \n* Paste one or more documents here\n*/\n{\n    \"id_producto\": 1,\n    \"categoria\": \"Ropa\",\n    \"subcategoria\": \"Camisetas\",\n    \"marca\": \"Nike\",\n    \"modelo\": \"AirMax 2024\",\n    \"descripcion\": \"Camiseta deportiva de alto rendimiento\",\n    \"precio\": 799,\n    \"tallasDisponibles\": [\"S\", \"M\", \"L\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/productos/crearActualizarProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"crearActualizarProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarProducto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_producto\": 20\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/productos/eliminarProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"eliminarProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoria\": \"Deportes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/productos/Q1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"Q1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\": \"Zara\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/productos/Q2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"Q2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Q3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\": \"Adidas\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/productos/Q3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"Q3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Esta carpeta contiene las consultas a la coleccion de productos"
+		}
+	]
+}

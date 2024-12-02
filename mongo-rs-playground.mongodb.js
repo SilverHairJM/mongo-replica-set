@@ -1,3 +1,4 @@
+//! Crear o usar la bd existente
 use("tienda_ropa");
 
 //! Crear las colecciones
@@ -428,21 +429,21 @@ db.getCollection("productos").insertMany([
 ]);
 
 //! Q1. Listar los productos de una categoría específica.
-const Q1 = db.getCollection("Productos").find({ categoria: "Ropa" });
+const Q1 = db.getCollection("productos").find({ categoria: "Ropa" });
 
 Q1.forEach((doc) => {
   printjson(doc);
 });
 
 //! Q2. Listar los productos de una marca específica.
-const Q2 = db.getCollection("Productos").find({ marca: "Nike" });
+const Q2 = db.getCollection("productos").find({ marca: "Nike" });
 
 Q2.forEach((doc) => {
   printjson(doc);
 });
 
 //! Q3. Listar los productos de una marca específica y los clientes que los han agregado a su carrito.
-const Q3 = db.getCollection("Productos").aggregate([
+const Q3 = db.getCollection("productos").aggregate([
   // Filtrar por la marca específica
   {
     $match: { marca: "Nike" },
@@ -496,7 +497,7 @@ Q4.forEach((doc) => {
 });
 
 //! Q5. Listar los productos con mejores valoraciones.
-const Q5 = db.getCollection("Usuarios_pedidos_carrito_comentarios").aggregate([
+const Q5 = db.getCollection("usuarios_pedidos_carrito_comentarios").aggregate([
   // Descomponer el array "comentarios"
   { $unwind: "$comentarios" },
   // Agrupar por producto_id y calcular promedio de valoraciones y total de comentarios
@@ -525,7 +526,7 @@ Q5.forEach((doc) => {
 });
 
 //! Q6. Listar los productos más agregados a los carritos de compra.
-const Q6 = db.getCollection("Usuarios_pedidos_carrito_comentarios").aggregate([
+const Q6 = db.getCollection("usuarios_pedidos_carrito_comentarios").aggregate([
   { $unwind: "$carrito.productos" },
   // Agrupar por producto_id y calcular promedio de valoraciones y total de comentarios
   {
@@ -598,7 +599,7 @@ Q7.forEach((doc) => {
 });
 
 //! Q8. Listar todos los productos que ha adquirido un cliente en específico.
-const Q8 = db.getCollection("Usuarios_pedidos_carrito_comentarios").aggregate([
+const Q8 = db.getCollection("usuarios_pedidos_carrito_comentarios").aggregate([
   {
     $match: { id: 1 },
   },
@@ -633,7 +634,7 @@ Q8.forEach((doc) => {
 });
 
 //! Q9. Listar todos los Clientes que han comprado un producto en específico.
-const Q9 = db.getCollection("Usuarios_pedidos_carrito_comentarios").aggregate([
+const Q9 = db.getCollection("usuarios_pedidos_carrito_comentarios").aggregate([
   // Filtrar clientes que tengan el producto específico en sus pedidos
   {
     $match: {
